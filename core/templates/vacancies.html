@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Поиск вакансий{% endblock %}
+
+{% block content %}
+<h1 class="mx-2 my-4">Поиск вакансий</h1>
+<table class="table table-striped table-bordered table-hover mx-4 my-2 w-75">
+    <thead>
+    <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Зарплата</th>
+        <th scope="col">Компания</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Отклики</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% for vacancy in list_of_all_vacancies %}
+    <tr>
+        <td>{{ vacancy.heading }}</td>
+        <td>{{ vacancy.salary }}</td>
+        <td>{{ vacancy.company }}</td>
+        <td>{{ vacancy.address }}</td>
+        <td>{{ vacancy.number_of_responses }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
