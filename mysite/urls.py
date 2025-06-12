@@ -8,5 +8,6 @@ from core.views import SearchView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-    path('search', SearchView.as_view(), name='search')
+    path('search/', SearchView.as_view(), name='search'),
+    path('accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

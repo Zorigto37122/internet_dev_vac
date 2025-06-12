@@ -24,8 +24,10 @@ class SearchView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        return Vacancy.objects.filter(
-            Q(heading__icontains=query) | Q(description__icontains=query) | Q(company__icontains=query) | Q(address__icontains=query)
-        )
+        if query:
+            return Vacancy.objects.filter(
+                Q(heading__icontains=query) | Q(description__icontains=query) | Q(company__icontains=query) | Q(address__icontains=query)
+            )
+        return Vacancy.objects.all()
 
 

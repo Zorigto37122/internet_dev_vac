@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<h2 class="mx-3 my-2">Регистрация</h2>
+<form method="post" style="padding-left: 10%; padding-right: 40%">
+    {% csrf_token %}
+    <div class="px-3 pt-3 py-2">
+        <label for="{{ form.username.id_for_label }}" class="form-label">Никнейм</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="px-3 py-2">
+        <label for="{{ form.email.id_for_label }}" class="form-label">Почта</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="px-3 py-2">
+        <label for="{{ form.password.id_for_label }}" class="form-label">Пароль</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="px-3 py-2">
+        <label for="{{ form.password_confirm.id_for_label }}" class="form-label">Пароль</label>
+        {{ form.password_confirm }}
+        {% for error in form.password_confirm.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary mx-3 mt-2" style="width: 100%">Регистрация</button>
+    <p class="mx-3 my-2"><a href="{% url 'login' %}" class="link-secondary link-opacity-75">Уже есть аккаунт? Вход</a></p>
+</form>
+{% endblock %}
